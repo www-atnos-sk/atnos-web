@@ -132,7 +132,7 @@ const Index = () => {
         {/* Copyright */}
         <div className="w-full px-4 border-t border-white/5 pt-4">
           <p className="text-[10px] text-gray-700 tracking-widest whitespace-nowrap">
-            © {currentYear} ATNOS. All rights reserved.
+            © {currentYear} ATNOS. Všetky práva vyhradené.
           </p>
         </div>
       </footer>
