@@ -126,7 +126,7 @@ const Index = () => {
             ATNOS, s. r. o.
           </h3>
           <p className="text-[10px] md:text-xs text-gray-600 tracking-wider">
-            IČO: 12 345 678
+            IČO: 46 059 792
           </p>
         </div>
 
