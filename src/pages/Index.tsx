@@ -6,14 +6,9 @@ const Index = () => {
 
   return (
     // HLAVNÝ KONTAJNER
-    // Zmenili sme bg-[#1E1E1E] na vlastný štýl s gradientom pre spotlight efekt
     <div 
       className="min-h-screen flex flex-col items-center justify-between relative font-sans text-gray-200"
       style={{
-        // Spotlight efekt: 
-        // - ellipse at top: svetlo vychádza z horného stredu
-        // - #2a2a2a 0%: farba svetla (tmavosivá, nie úplne biela, aby neoslňovala)
-        // - #0a0a0a 60%: farba pozadia (takmer čierna), do ktorej sa svetlo stratí
         background: "radial-gradient(ellipse at top, #2a2a2a 0%, #0a0a0a 70%)"
       }}
     >
@@ -42,20 +37,22 @@ const Index = () => {
           </div>
 
         {/* 3. DIVIDER */}
-          {/* Zmenil som mt-8 na mt-6, aby to bolo opticky vyvážené s textom */}
           <div 
             className="h-[1px] w-3/5 mt-6 bg-gradient-to-r from-transparent via-gray-400 to-transparent opacity-0 animate-fade-up"
             style={{ 
               animationDelay: '0.3s',
               animationFillMode: 'forwards',
-              boxShadow: '0 0 15px rgba(255, 255, 255, 0.2)' // Jemne zvýšená žiara pre kovový efekt
+              boxShadow: '0 0 15px rgba(255, 255, 255, 0.2)' 
             }}
           ></div>
         </div>
 
-        {/* 4. KONTAKTY */}
-        <div className="mt-16 w-full max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+        {/* 4. KONTAKTY - UPRAVENÉ ZAROVNANIE */}
+        {/* Pridané 'flex justify-center', aby sa celý blok kontaktov držal v strede obrazovky */}
+        <div className="mt-16 w-full max-w-6xl mx-auto flex justify-center">
+          
+          {/* Tu nastala zmena: 'items-start' pre mobil (zarovná doľava) a 'md:items-center' pre desktop (vráti na stred) */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-8 md:gap-12">
             
             {/* Email */}
             <div 
@@ -76,7 +73,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Mobil */}
+            {/* Telefon */}
             <div 
               className="flex items-center gap-4 p-2 opacity-0 animate-fade-up"
               style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}
@@ -85,7 +82,7 @@ const Index = () => {
                 <Phone className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Mobil</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Telefon</p>
                 <a 
                   href="tel:+421907347310" 
                   className="text-sm font-medium text-gray-300 hover:text-white transition-colors block"
@@ -95,7 +92,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Adresa */}
+            {/* Sídlo */}
             <div 
               className="flex items-center gap-4 p-2 opacity-0 animate-fade-up"
               style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
@@ -104,7 +101,7 @@ const Index = () => {
                 <MapPin className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Adresa</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Sídlo</p>
                 <a 
                   href={googleMapsUrl}
                   target="_blank"
@@ -121,10 +118,24 @@ const Index = () => {
       </main>
 
       {/* --- PÄTIČKA --- */}
-      <footer className="w-full py-6 text-center opacity-0 animate-fade-up" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
-        <p className="text-[10px] md:text-xs text-gray-600 tracking-widest">
-          © 2026 ATNOS. All rights reserved.
-        </p>
+      <footer className="w-full py-8 text-center opacity-0 animate-fade-up" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
+        
+        {/* Právne informácie */}
+        <div className="flex flex-col items-center justify-center gap-1 mb-6">
+          <h3 className="text-xs md:text-sm text-gray-400 font-medium tracking-wide">
+            ATNOS, s. r. o.
+          </h3>
+          <p className="text-[10px] md:text-xs text-gray-600 tracking-wider">
+            IČO: 12 345 678
+          </p>
+        </div>
+
+        {/* Copyright - Upravené na plnú šírku a jeden riadok */}
+        <div className="w-full px-4 border-t border-white/5 pt-4">
+          <p className="text-[10px] text-gray-700 tracking-widest whitespace-nowrap">
+            © {currentYear} ATNOS. All rights reserved.
+          </p>
+        </div>
       </footer>
 
     </div>
