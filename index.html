@@ -1,34 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="sk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Tvoja favicona -->
+    <!-- Ikona stránky -->
     <link rel="icon" href="/favicon.ico" />
 
-    <!-- Hlavné meta údaje -->
+    <!-- Hlavné meta údaje pre Google -->
     <title>ATNOS | Engineering Solutions</title>
-    <meta name="description" content="Professional engineering solutions and mechanical design. Focusing on precision, quality, and technical excellence based in Trenčín, Slovakia." />
-    <meta name="author" content="ATNOS" />
-    <meta name="keywords" content="engineering, precision engineering, industrial solutions, ATNOS, mechanical engineering, Slovakia, Trenčín" />
+    <meta name="description" content="Profesionálne inžinierske riešenia, technické poradenstvo a konštrukčná činnosť. Sídlo v Trenčíne." />
+    <meta name="author" content="ATNOS, s. r. o." />
+    <!-- Opravená medzera za čiarkou pred 'Slovakia' -->
+    <meta name="keywords" content="engineering, precision engineering, engineering solutions, industrial solutions, ATNOS, mechanical engineering, inžinierska činnosť, technické poradenstvo, projektovanie, konštrukcia, Slovakia, Trenčín" />
     <link rel="canonical" href="https://www.atnos.sk" />
 
-    <!-- Open Graph / Facebook (Upravené na tvoje logo) -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:title" content="ATNOS | Engineering Solutions" />
-    <meta property="og:description" content="Professional engineering solutions and mechanical design. Focusing on precision, quality, and technical excellence." />
+    <meta property="og:description" content="Professional engineering solutions and mechanical design. Komplexné inžinierske riešenia a technické služby." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.atnos.sk" />
     <meta property="og:image" content="https://www.atnos.sk/logo.png" />
 
-    <!-- Twitter (Upravené na tvoje logo) -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="ATNOS | Engineering Solutions" />
-    <meta name="twitter:description" content="Professional engineering solutions and mechanical design. Focusing on precision, quality, and technical excellence." />
+    <meta name="twitter:description" content="Professional engineering solutions and mechanical design. Komplexné inžinierske riešenia." />
     <meta name="twitter:image" content="https://www.atnos.sk/logo.png" />
+
+    <!-- Štruktúrované dáta pre Google Mapy (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Engineering Service", 
+      "name": "ATNOS, s. r. o.",
+      "image": "https://www.atnos.sk/logo.png",
+      "@id": "https://www.atnos.sk",
+      "url": "https://www.atnos.sk",
+      "telephone": "+421907347310",
+      "email": "info@atnos.sk",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jána Hollého 883/18",
+        "addressLocality": "Trenčín",
+        "postalCode": "911 05",
+        "addressCountry": "SK"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "08:00",
+        "closes": "16:00"
+      }
+    }
+    </script>
   </head>
 
-  <!-- Pridal som čierne pozadie priamo sem, aby stránka pri načítaní neblikla na bielo -->
+  <!-- Farba pozadia tu je super trik proti bielemu prebliknutiu -->
   <body style="background-color: #0a0a0a; margin: 0;">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

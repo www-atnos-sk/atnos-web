@@ -31,8 +31,15 @@ const Index = () => {
             className="mt-4 text-center opacity-0 animate-fade-up"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
-            <p className="text-sm md:text-base text-gray-400 uppercase tracking-[0.3em] font-light">
+            {/* Hlavný anglický tagline */}
+            <h1 className="text-sm md:text-base text-gray-400 uppercase tracking-[0.3em] font-light">
               Engineering Solutions
+            </h1>
+            
+            {/* SEO DOPLNOK - Malý text pod tým */}
+            {/* Toto povie Google, čo presne robíte v slovenčine */}
+            <p className="mt-2 text-[10px] md:text-xs text-gray-500 italic tracking-wider font-light">
+              Inžinierska činnosť • Technické riešenia • Trenčín
             </p>
           </div>
 
