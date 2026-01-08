@@ -39,7 +39,7 @@ const Index = () => {
             {/* SEO DOPLNOK - Malý text pod tým */}
             {/* Toto povie Google, čo presne robíte v slovenčine */}
             <p className="mt-2 text-[10px] md:text-xs text-gray-500 italic tracking-wider font-light">
-              Inžinierska činnosť • Technické riešenia • Trenčín
+              Dizajn • Vývoj • Konštrukcia • Trenčín
             </p>
           </div>
 
