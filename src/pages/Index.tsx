@@ -1,8 +1,44 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
 
 const Index = () => {
+  // 1. STAV JAZYKA (defaultne 'sk')
+  const [lang, setLang] = useState<'sk' | 'en'>('sk');
+
   const currentYear = new Date().getFullYear();
   const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=Jána+Hollého+883/18,+Trenčín,+911+05";
+
+  // 2. SLOVNÍK PREKLADOV
+  const translations = {
+    sk: {
+      taglineMain: "Engineering Solutions",
+      taglineSub: "Dizajn • Vývoj • Konštrukcia • Trenčín",
+      emailLabel: "Email",
+      phoneLabel: "Telefón",
+      addressLabel: "Sídlo",
+      addressText: "Jána Hollého 883/18, Trenčín, 911 05",
+      footerCompany: "ATNOS, s. r. o.",
+      footerRights: "Všetky práva vyhradené.",
+    },
+    en: {
+      taglineMain: "Engineering Solutions",
+      taglineSub: "Design • Development • Construction • Trenčín",
+      emailLabel: "Email",
+      phoneLabel: "Phone",
+      addressLabel: "Headquarters",
+      addressText: "Jána Hollého 883/18, Trenčín, Slovakia",
+      footerCompany: "ATNOS, s. r. o.",
+      footerRights: "All rights reserved.",
+    }
+  };
+
+  // Aktuálny text podľa zvoleného jazyka
+  const t = translations[lang];
+
+  // Funkcia na prepnutie jazyka
+  const toggleLanguage = () => {
+    setLang(prev => prev === 'sk' ? 'en' : 'sk');
+  };
 
   return (
     // HLAVNÝ KONTAJNER
@@ -13,6 +49,18 @@ const Index = () => {
       }}
     >
       
+      {/* --- PREPÍNAČ JAZYKA (V ROHU) --- */}
+      <div className="absolute top-4 right-4 z-50 animate-fade-in">
+        <button 
+          onClick={toggleLanguage}
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all text-xs font-medium tracking-widest text-gray-400 hover:text-white"
+        >
+          <Globe className="w-3 h-3" />
+          {/* ZMENA: Teraz ukazuje aktuálny jazyk (SK alebo EN) */}
+          <span>{lang.toUpperCase()}</span>
+        </button>
+      </div>
+
       {/* --- HLAVNÁ SEKCIA --- */}
       <main className="flex-1 flex flex-col items-center justify-center w-full px-4">
         
@@ -26,20 +74,17 @@ const Index = () => {
             />
           </div>
 
-        {/* 2. NOVÝ POPIS (TAGLINE) */}
+        {/* 2. POPIS (TAGLINE) */}
           <div 
             className="mt-4 text-center opacity-0 animate-fade-up"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
-            {/* Hlavný anglický tagline */}
             <h1 className="text-sm md:text-base text-gray-400 uppercase tracking-[0.3em] font-light">
-              Engineering Solutions
+              {t.taglineMain}
             </h1>
             
-            {/* SEO DOPLNOK - Malý text pod tým */}
-            {/* Toto povie Google, čo presne robíte v slovenčine */}
-            <p className="mt-2 text-[10px] md:text-xs text-gray-500 italic tracking-wider font-light">
-              Dizajn • Vývoj • Konštrukcia • Trenčín
+            <p className="mt-3 text-[11px] md:text-xs text-gray-500 tracking-widest font-medium uppercase opacity-80">
+              {t.taglineSub}
             </p>
           </div>
 
@@ -54,10 +99,9 @@ const Index = () => {
           ></div>
         </div>
 
-        {/* 4. KONTAKTY - UPRAVENÉ ZAROVNANIE A MEDZERY */}
+        {/* 4. KONTAKTY */}
         <div className="mt-16 w-full max-w-6xl mx-auto flex justify-center">
           
-          {/* ZMENA TU: gap-8 som zmenil na gap-2 (pre mobil) */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-2 md:gap-12">
             
             {/* Email */}
@@ -69,7 +113,7 @@ const Index = () => {
                 <Mail className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Email</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">{t.emailLabel}</p>
                 <a 
                   href="mailto:info@atnos.sk" 
                   className="text-sm font-medium text-gray-300 hover:text-white transition-colors block"
@@ -88,7 +132,7 @@ const Index = () => {
                 <Phone className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Telefon</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">{t.phoneLabel}</p>
                 <a 
                   href="tel:+421907347310" 
                   className="text-sm font-medium text-gray-300 hover:text-white transition-colors block"
@@ -107,14 +151,14 @@ const Index = () => {
                 <MapPin className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Sídlo</p>
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">{t.addressLabel}</p>
                 <a 
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-medium text-gray-300 hover:text-white transition-colors whitespace-nowrap block"
                 >
-                  Jána Hollého 883/18, Trenčín, 911 05
+                  {t.addressText}
                 </a>
               </div>
             </div>
@@ -129,7 +173,7 @@ const Index = () => {
         {/* Právne informácie */}
         <div className="flex flex-col items-center justify-center gap-1 mb-6">
           <h3 className="text-xs md:text-sm text-gray-400 font-medium tracking-wide">
-            ATNOS, s. r. o.
+            {t.footerCompany}
           </h3>
           <p className="text-[10px] md:text-xs text-gray-600 tracking-wider">
             IČO: 46 059 792
@@ -139,7 +183,7 @@ const Index = () => {
         {/* Copyright */}
         <div className="w-full px-4 border-t border-white/5 pt-4">
           <p className="text-[10px] text-gray-700 tracking-widest whitespace-nowrap">
-            © {currentYear} ATNOS. Všetky práva vyhradené.
+            © {currentYear} ATNOS. {t.footerRights}
           </p>
         </div>
       </footer>
