@@ -47,12 +47,11 @@ const Index = () => {
           ></div>
         </div>
 
-        {/* 4. KONTAKTY - UPRAVENÉ ZAROVNANIE */}
-        {/* Pridané 'flex justify-center', aby sa celý blok kontaktov držal v strede obrazovky */}
+        {/* 4. KONTAKTY - UPRAVENÉ ZAROVNANIE A MEDZERY */}
         <div className="mt-16 w-full max-w-6xl mx-auto flex justify-center">
           
-          {/* Tu nastala zmena: 'items-start' pre mobil (zarovná doľava) a 'md:items-center' pre desktop (vráti na stred) */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-8 md:gap-12">
+          {/* ZMENA TU: gap-8 som zmenil na gap-2 (pre mobil) */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-2 md:gap-12">
             
             {/* Email */}
             <div 
@@ -130,7 +129,7 @@ const Index = () => {
           </p>
         </div>
 
-        {/* Copyright - Upravené na plnú šírku a jeden riadok */}
+        {/* Copyright */}
         <div className="w-full px-4 border-t border-white/5 pt-4">
           <p className="text-[10px] text-gray-700 tracking-widest whitespace-nowrap">
             © {currentYear} ATNOS. All rights reserved.
