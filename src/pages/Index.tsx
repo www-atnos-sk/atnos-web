@@ -25,7 +25,7 @@ const Index = () => {
       taglineSub: "Design • Development • Construction • Trenčín",
       emailLabel: "Email",
       phoneLabel: "Phone",
-      addressLabel: "Headquarters",
+      addressLabel: "Address",
       addressText: "Jána Hollého 883/18, Trenčín, Slovakia",
       footerCompany: "ATNOS, s. r. o.",
       footerRights: "All rights reserved.",
